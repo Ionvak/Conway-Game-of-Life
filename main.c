@@ -7,8 +7,8 @@ int main(int argc, char** argv) {
     initialize_board(board, INPUT_FILE);
 
     while(1){
-        update(board);
-        display(board);
+        update(board, SIZE);
+        display(board, SIZE);
     }    
     return 0;
 }
