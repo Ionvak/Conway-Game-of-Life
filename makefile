@@ -1,8 +1,8 @@
-#gof : main.o game.o binary.o
-#	gcc -o gof main.o game.o binary.o
+gof : main.o game.o binary.o
+	gcc -o gof main.o game.o binary.o
 
-gof_testing : tests.o game.o binary.o 
-	gcc -o gof_testing tests.o game.o binary.o
+#gof_testing : tests.o game.o binary.o 
+#	gcc -o gof_testing tests.o game.o binary.o
 
 main.o : main.c binary.h game.h
 	gcc -c main.c
