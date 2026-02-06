@@ -1,6 +1,7 @@
 #include "game.h"
 #include "binary.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #define INT_SIZE 32
 
@@ -38,9 +39,9 @@ void update(int* board, int size){
 }
 
 void display(int* board, int size){
-    printf("\e[1;1H\e[2J");
+    system("clear");
     for(int line = 1 ; line <= size; line++){
-        for(int bit = INT_SIZE; bit >= 1 ; bit--){
+        for(int bit = 1; bit <= INT_SIZE ; bit++){
             int bit_val = get_bit(bit, line, board);
             if(bit_val)
                 printf("# ");
@@ -51,6 +52,30 @@ void display(int* board, int size){
     }
 }
 
-void initialize_board(int* board, char* file_name){
+void initialize_board(char* file_name, int* board){
+    FILE* fp = fopen(file_name, "r");
+    if(fp == NULL){
+        printf("Could not open input file: %s.", file_name);
+        return;
+    }
 
+    int row = 1;
+    int col = 1;
+    int file_in;
+    while((file_in = getc(fp)) != ';'){
+        if(file_in == ' ' || file_in == '\n') continue;
+        else if(file_in == ','){
+            row++;
+            col = 0;
+            continue;
+        }
+
+        if(file_in != '0')
+            set_bit(col,row,board);
+        else
+            clear_bit(col,row,board);
+        col++;
+    }
+
+    fclose(fp);
 }

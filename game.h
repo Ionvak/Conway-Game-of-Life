@@ -3,6 +3,6 @@
 
 void update(int* board, int size);
 void display(int* board, int size);
-void initialize_board(int* board, char* file_name);
+void initialize_board(char* file_name, int* board);
 
 #endif
