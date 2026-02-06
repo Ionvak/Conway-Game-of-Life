@@ -2,7 +2,7 @@
 #include "binary.h"
 #include <unistd.h>
 #define SIZE 32
-#define INPUT_FILE "gof.txt"
+#define INPUT_FILE "gol.txt"
 #define UPDATE_PERIOD_MS 300
 int main(int argc, char** argv) {
     int board[SIZE];
