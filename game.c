@@ -62,7 +62,7 @@ void initialize_board(char* file_name, int* board){
     int row = 1;
     int col = 1;
     int file_in;
-    while((file_in = getc(fp)) != ';'){
+    while((file_in = getc(fp)) != EOF){
         if(file_in == ' ' || file_in == '\n') continue;
         else if(file_in == ','){
             row++;
